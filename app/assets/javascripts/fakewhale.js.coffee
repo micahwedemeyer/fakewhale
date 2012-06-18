@@ -3,7 +3,9 @@ window.Fakewhale =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> alert 'Hello from Backbone!'
+  init: ->
+    new Fakewhale.Routers.Tweets()
+    Backbone.history.start()
 
 $(document).ready ->
   Fakewhale.init()
