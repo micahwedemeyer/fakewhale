@@ -1,1 +1,10 @@
-<h1>Template!</h1>
+<h1>Fakewhale</h1>
+
+<form id="new_tweet">
+  <label for="new_tweet_username">Username: </label>
+  <input type="text" name="username" placeholder="@username" id="new_tweet_username" />
+  <br/>
+  <label for="new_tweet_message">Message: </label>
+  <input type="text" name="message" placeholder="blah blah, I'm so interesting..." id="new_tweet_message" />
+</form>
+
