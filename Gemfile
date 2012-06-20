@@ -17,7 +17,7 @@ group :assets do
 end
 
 group :production do
-  gem 'pg', '0.13.1'
+  #gem 'pg', '0.13.1'
 end
 
 group :development, :test do
