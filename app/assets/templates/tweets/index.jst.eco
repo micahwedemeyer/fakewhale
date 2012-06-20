@@ -1,5 +1,3 @@
-<h1>Fakewhale</h1>
-
 <form id="new_tweet">
   <label for="new_tweet_username">Username: </label>
   <input type="text" name="username" placeholder="@username" id="new_tweet_username" />
