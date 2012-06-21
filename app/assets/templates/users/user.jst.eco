@@ -9,6 +9,13 @@
   <input type="text" name="username" placeholder="@username" id="new_tweet_username" />
 <% end %>
 
-<br/>
 <label for="new_tweet_message">Message: </label>
-<input type="text" name="message" placeholder="blah blah, I'm so interesting..." id="new_tweet_message" />
+<% if @message: %>
+  <textarea name="message" id="new_tweet_message">
+    <%= @message %>
+  </textarea>
+<% else: %>
+  <textarea name="message" id="new_tweet_message" placeholder="blah blah blah, I'm so interesting..." />
+<% end %>
+
+<a href="#" id="save_tweet">Save Tweet</a>

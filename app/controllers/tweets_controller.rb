@@ -9,4 +9,8 @@ class TweetsController < ApplicationController
     respond_with Tweet.where(:id => params[:id])
   end
 
+  def create
+    respond_with Tweet.create(:username => params[:username], :message => params[:message])
+  end
+
 end

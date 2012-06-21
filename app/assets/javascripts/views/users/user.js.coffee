@@ -7,9 +7,11 @@ class Fakewhale.Views.User extends Backbone.View
 
   events:
     'change #new_tweet_username': 'selectUser',
+    'click #save_tweet': 'saveTweet'
 
   render: ->
-    $(@el).html(@template(user: @user))
+    message = $("#new_tweet_message").val()
+    $(@el).html(@template(user: @user, message: message))
 
     if @user.get("profile_background_image_url")
       $("#user_container").css("background-image", "url(#{@user.get("profile_background_image_url")})").
@@ -28,3 +30,10 @@ class Fakewhale.Views.User extends Backbone.View
 
   refreshUser: ->
     @render()
+
+  saveTweet: (event)->
+    event.preventDefault()
+    message = $("#new_tweet_message").val()
+    @user.saveTweet(message, (tweet) ->
+      alert("saved to id: #{tweet.get('id')}")
+    )
