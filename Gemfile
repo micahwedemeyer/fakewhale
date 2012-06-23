@@ -17,19 +17,17 @@ group :assets do
 end
 
 group :production do
-  #gem 'pg', '0.13.1'
+  gem 'pg', '0.13.1'
 end
 
 group :development, :test do
   gem 'backbone-on-rails', '~> 0.9.2'
-  #gem 'mysql2'
+  gem 'mysql2'
   gem 'sqlite3'
-  gem 'rspec-rails', '2.8.1'
 end
 
 group :test do
-  gem 'factory_girl', '2.6.0'
-  gem 'factory_girl_rails', '1.7.0'
-  gem 'shoulda-matchers', '1.0.0'
+  gem 'factory_girl_rails', '3.5.0'
+  gem 'rspec-rails', '2.8.1'
 end
 
