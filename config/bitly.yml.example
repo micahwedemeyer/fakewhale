@@ -1,0 +1,9 @@
+default: &default
+  login: "bitly_username"
+  api_key: "my_key"k
+
+development: *default
+
+test: *default
+
+production: *default
