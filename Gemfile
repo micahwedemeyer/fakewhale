@@ -23,6 +23,7 @@ end
 group :development, :test do
   gem 'backbone-on-rails', '~> 0.9.2'
   gem 'mysql2'
+  gem 'pry'
   gem 'sqlite3'
 end
 
