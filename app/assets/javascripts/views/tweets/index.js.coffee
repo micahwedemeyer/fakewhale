@@ -1,17 +1,25 @@
 class Fakewhale.Views.TweetsIndex extends Backbone.View
   template: JST['tweets/index']
 
+  initialize: (opts = {}) ->
+    @options.model = new Fakewhale.Models.Tweet() if !_.has(opts, "model")
+    @user = new Fakewhale.Models.User()
+
   events:
-    'change #new_tweet_username': 'selectUser'
+    'click #save_tweet': 'saveTweet'
 
   render: ->
-    $(@el).html(@template())
+    message = $("#new_tweet_message").val()
+    @$el.html(@template(user: @user, message: message))
+
+    userView = new Fakewhale.Views.User({model: @user})
+    @$el.find('#user_container').html(userView.render().el)
+
     this
 
-  selectUser: (event) ->
+  saveTweet: (event)->
     event.preventDefault()
-    username = $('#new_tweet_username').val()
-
-    $.getJSON("https://api.twitter.com/1/users/show.json?screen_name=" + username + "&callback=?", {}, (data) ->
-      alert("Retrieved: " + data.name)
+    message = $("#new_tweet_message").val()
+    @user.saveTweet(message, (tweet) ->
+      alert("saved to id: #{tweet.get('id')}")
     )

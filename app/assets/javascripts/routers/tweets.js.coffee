@@ -3,5 +3,5 @@ class Fakewhale.Routers.Tweets extends Backbone.Router
     '': 'index'
 
   index: ->
-    userView = new Fakewhale.Views.User()
-    $('#user_container').html(userView.render().el)
+    tweetView = new Fakewhale.Views.TweetsIndex()
+    $('#tweet_container').html(tweetView.render().el)
