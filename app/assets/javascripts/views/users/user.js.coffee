@@ -1,6 +1,8 @@
 class Fakewhale.Views.User extends Backbone.View
   template: JST['users/user']
 
+  id: "user_inner"
+
   initialize: (opts = {}) ->
     @options.model = new Fakewhale.Models.User() if !_.has(opts, "model")
     @user = @options.model
@@ -14,7 +16,7 @@ class Fakewhale.Views.User extends Backbone.View
     @$el.html(@template(user: @user, message: message))
 
     if @user.get("profile_background_image_url")
-      $("#user_container").css("background-image", "url(#{@user.get("profile_background_image_url")})").
+      $("#outer_wrapper").css("background-image", "url(#{@user.get("profile_background_image_url")})").
         css("background-repeat", "no-repeat").
         css("background-color", "##{@user.get("profile_background_color")}")
 

@@ -1,3 +1,39 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#central_column {
+  background: #fff;
+  width: 540px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input#new_tweet_username {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+textarea#new_tweet_message {
+  width: 400px;
+  height: 200px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  display: block;
+  margin: 0 auto;
+}
+
+#user_inner {
+  #profile_image {
+    float: left;
+    margin-right: 20px;
+  }
+
+  #name_container {
+    float: left;
+  }
+}
+
+#message_container {
+  clear: both;
+  margin-top: 20px;
+}

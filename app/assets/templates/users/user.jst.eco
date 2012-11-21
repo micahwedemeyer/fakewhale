@@ -1,11 +1,9 @@
 <img src="<%= @user.get("profile_image_url") %>" id="profile_image" />
 
 <div id="name_container">
-  <span id="name"><%= @user.get("name") %></span>
-</div>
 <% if @user.get("screen_name"): %>
   <input type="text" name="username" placeholder="@username" id="new_tweet_username" value="<%= @user.get("screen_name") %>" />
 <% else: %>
   <input type="text" name="username" placeholder="@username" id="new_tweet_username" />
 <% end %>
-
+</div>
