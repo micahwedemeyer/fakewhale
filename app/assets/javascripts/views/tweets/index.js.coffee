@@ -12,8 +12,9 @@ class Fakewhale.Views.TweetsIndex extends Backbone.View
     message = $("#new_tweet_message").val()
     @$el.html(@template(user: @user, message: message))
 
-    userView = new Fakewhale.Views.User({model: @user})
-    @$el.find('#user_container').html(userView.render().el)
+    userContainer = @$el.find('#user_container')
+    userView = new Fakewhale.Views.User({model: @user, el: userContainer })
+    userView.render()
 
     this
 
