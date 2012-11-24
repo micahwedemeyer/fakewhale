@@ -32,4 +32,42 @@ class TwitterUser < ActiveRecord::Base
     self.cached_tweet = open("https://twitter.com/#{username}/status/#{cached_tweet_id}").read
     self.cached_at = Time.now
   end
+
+  def body
+    doc.css("body").inner_html.to_s
+  end
+
+  def modified_body
+    # Clone it so we can mess with it
+    d = doc.clone
+
+    # Replace the username with a text field
+    d.css("div.permalink-header span.username").each do |username_span|
+      username_span.inner_html = doc.create_element("input").tap do |i|
+        i.set_attribute("type", "text")
+        i.set_attribute("id", "fakewhale_username")
+        i.set_attribute("value", "@#{username}")
+      end
+    end
+
+    # Replace the tweet with a textarea
+    d.css("p.tweet-text").each do |tweet_p|
+      tweet_p.inner_html = doc.create_element("textarea").tap do |t|
+        t.set_attribute("id", "fakewhale_tweet")
+        t.set_attribute("placeholder", "Blah blah, I say such important things")
+      end
+    end
+
+    d.css("body").to_s
+  end
+
+  def styling_tags
+    doc.css("link [rel='stylesheet'], style").to_s
+  end
+
+  protected
+
+  def doc
+    @doc ||= Nokogiri::HTML(cached_tweet)
+  end
 end
