@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091118150534) do
+ActiveRecord::Schema.define(:version => 20121124142801) do
 
   create_table "cafepress_items", :force => true do |t|
     t.integer  "tweet_id"
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(:version => 20091118150534) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "twitter_users", :force => true do |t|
+    t.string   "username"
+    t.integer  "cached_tweet_id", :limit => 8
+    t.text     "cached_tweet"
+    t.datetime "cached_at",                    :default => '1970-01-01 00:00:00'
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
+  end
+
+  add_index "twitter_users", ["username", "cached_at"], :name => "index_twitter_users_on_username_and_cached_at"
+  add_index "twitter_users", ["username"], :name => "index_twitter_users_on_username", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login"
