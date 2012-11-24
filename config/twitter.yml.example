@@ -1,0 +1,11 @@
+default: &default
+  consumer_key: XXX
+  consumer_secret: YYY
+  oauth_token: AAA
+  oauth_token_secret: BBB
+
+development: *default
+
+test: *default
+
+production: *default

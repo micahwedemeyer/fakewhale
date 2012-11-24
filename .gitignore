@@ -1,5 +1,6 @@
 config/database.yml
 config/bitly.yml
+config/twitter.yml
 
 # Ignore bundler config
 /.bundle
