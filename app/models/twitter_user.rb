@@ -18,6 +18,7 @@ class TwitterUser < ActiveRecord::Base
       tweets = Twitter.user_timeline(username, count: 30, exclude_replies: true, include_rts: false)
       if tweets.any?
         find_or_initialize_by_username(username: username).tap do |cached|
+          cached.twitter_user_id = tweets[0].user.id
           cached.cached_tweet_id = tweets[0].id
           cached.update_from_twitter
           cached.save
@@ -63,6 +64,10 @@ class TwitterUser < ActiveRecord::Base
 
   def styling_tags
     doc.css("link [rel='stylesheet'], style").to_s
+  end
+
+  def as_json(options)
+    super({methods: [:modified_body, :styling_tags]}.merge(options))
   end
 
   protected

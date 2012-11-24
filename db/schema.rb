@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20121124142801) do
 
   create_table "twitter_users", :force => true do |t|
     t.string   "username"
+    t.integer  "twitter_user_id"
     t.integer  "cached_tweet_id", :limit => 8
     t.text     "cached_tweet"
     t.datetime "cached_at",                    :default => '1970-01-01 00:00:00'
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20121124142801) do
     t.datetime "updated_at",                                                      :null => false
   end
 
+  add_index "twitter_users", ["twitter_user_id"], :name => "index_twitter_users_on_twitter_user_id"
   add_index "twitter_users", ["username", "cached_at"], :name => "index_twitter_users_on_username_and_cached_at"
   add_index "twitter_users", ["username"], :name => "index_twitter_users_on_username", :unique => true
 
