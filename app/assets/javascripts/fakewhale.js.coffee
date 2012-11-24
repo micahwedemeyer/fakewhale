@@ -5,7 +5,7 @@ window.Fakewhale =
   Routers: {}
   init: ->
     new Fakewhale.Routers.Tweets()
-    Backbone.history.start()
+    Backbone.history.start({pushState: true})
 
 $(document).ready ->
   Fakewhale.init()

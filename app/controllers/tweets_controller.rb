@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
   end
 
   def show
-    respond_with Tweet.where(:id => params[:id])
+    respond_with Tweet.where(:id => params[:id]).first
   end
 
   def create

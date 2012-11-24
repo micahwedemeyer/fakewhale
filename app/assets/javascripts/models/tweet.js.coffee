@@ -1,5 +1,5 @@
 class Fakewhale.Models.Tweet extends Backbone.Model
-  url: '/api/tweets'
+  urlRoot: '/api/tweets'
 
   validate: (attrs) ->
     if attrs.username == undefined || attrs.username.length == 0
